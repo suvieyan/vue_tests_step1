@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <div v-for="(item, index) of list1" :key="index">{{item}}--{{index}}</div>
+
+    <div v-for="(item, index) of list" :key="item.id">{{item.name}}--{{item.age}}--{{index}}</div>
+
+    <div v-for="(value, key, index) in userinfo">{{key}}--{{value}}--{{index}}</div>
+
+</div>
+
+<!--template 是一个占位符， 不会被引用。-->
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            // 修改数组， 不能使用下标，
+            // 1， 改变对象的引用
+            // 2， 需要使用数组的方法， push, pop， shift, unshift, splice, sort, reverse 等方法
+            // 3， 或者使用set 方法
+            list1:['a','b','c'],
+            list:[
+                {
+                    id:'001',
+                    name:'张三',
+                    age:20
+                },
+                {
+                    id:'002',
+                    name:'李四',
+                    age:30
+                },
+                {
+                    id:'003',
+                    name:'王五',
+                    age:40
+                }
+            ],
+
+            // 修改对象的属性， 不能使用下标，
+            // 1，改变对象的引用
+            // 2， 对象使用set 方法改变对象的值
+            userinfo:{
+                name:'张三',
+                age:20,
+                address:'北京',
+                gender:"female"
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

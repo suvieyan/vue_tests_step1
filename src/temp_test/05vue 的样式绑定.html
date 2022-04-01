@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<style>
+    .activated {
+        color: red;
+    }
+</style>
+<body>
+<!--class 对象绑定， isActivated true  or false决定的-->
+<!--<div id="app" @click="handleDivClick" :class="{activated: isActivated}">{{message}}</div>-->
+
+<!--class 可以和数组绑定-->
+<!--<div id="app" @click="handleDivClick1" :class="[activated, activatedOne]">{{message}}</div>-->
+
+
+<!--<div id="app" @click="handleDivClick2" :style="styleObj">{{message}}</div>-->
+
+<div id="app" @click="handleDivClick2" :style="[styleObj,]">{{message}}</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            isActivated: false,
+            activated: '',
+            activatedOne: 'activated-one',
+            styleObj: {
+                color: 'red',
+                fontSize: '30px'
+            }
+        },
+        methods: {
+            handleDivClick: function () {
+                this.isActivated = !this.isActivated;
+            },
+            handleDivClick1: function () {
+                // 操作数组
+                this.activated = this.activated=="activated" ? '' : 'activated';
+            },
+            handleDivClick2: function () {
+                // 操作样式对象
+                this.styleObj.color = this.styleObj.color=="red" ? 'blue' : 'red';
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生命周期demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<!--    <script src="./vue.js"></script>-->
+</head>
+<body>
+<div id="app"></div>
+
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        template: "<div>{{ message }}</div>",
+        data: { message: 'Hello Vue!' },
+        // 生命周期函数就是在特定时间执行的函数，比如mounted，updated，destroyed
+        beforeCreate: function () {
+            // beforeCreate 创建之前
+            console.log(this.$el)
+            console.log('beforeCreate');
+        },
+        created: function () {
+            // created 创建之后
+            console.log(this.$el)
+            console.log('created');
+        },
+        beforeMount: function () {
+            // beforeMount 挂载之前
+            console.log(this.$el)
+            console.log('beforeMount');
+        },
+        mounted: function () {
+            // mounted 挂载之后
+            console.log(this.$el)
+            console.log('mounted');
+        },
+        beforeUpdate: function () {
+            // beforeUpdate 更新之前
+            console.log(this.$el)
+            console.log('beforeUpdate');
+        },
+        updated: function () {
+            // updated 更新之后
+            console.log(this.$el)
+            console.log('updated');
+        },
+        beforeDestroy: function () {
+            // beforeDestroy 销毁之前
+            console.log(this.$el)
+            console.log('beforeDestroy');
+        },
+        destroyed: function () {
+            // destroyed 销毁之后
+            console.log(this.$el)
+            console.log('destroyed');
+        }
+    });
+</script>
+</html>

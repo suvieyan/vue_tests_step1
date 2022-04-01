@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模版语法</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{message}}
+<!--    v- 后续都是一个js 的表达式-->
+    <div v-text="message"></div> // 等同于插值表达式
+    <div v-html="message"></div>
+
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: '<span style="color: red">Hello</span> Vue!'
+        }
+    })
+</script>
+</html>

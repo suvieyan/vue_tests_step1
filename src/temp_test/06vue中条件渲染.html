@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+<!--        不显示的时候， dom 元素不会被渲染-->
+        <div v-if="show=='a'" data-test="v-if">this is A </div> <!-- 条件渲染 -->
+        <div v-else-if="show=='b'" data-test="v-else-if">This is B</div>
+        <div v-else data-test="v-else">Hi ， Suvie</div>
+<!--        v-show, 不显示的时候， 依然渲染， display=none, 不会频繁操作dom , 效率更高-->
+        <div v-show="show" data-test="v-show">{{message}}</div>
+
+<!--        vue 会复用之前的标签， 需要给dom 上加一个key， 否则会报错-->
+        <div v-if="show">
+            用户名：<input type="text" key="username">
+        </div>
+        <div v-else>
+            密码：<input type="password" key="password">
+        </div>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue.js!',
+                show: true
+            }
+        })
+    </script>
+
+</body>
+</html>

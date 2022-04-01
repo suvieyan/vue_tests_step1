@@ -1,26 +1,81 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <input type="text" v-model="inputValue">
+<!--  @click == v-on:click-->
+  <button @click="handleBtn">提交</button>
+  <ul>
+<!--    v-bind 监控数据， content=item, 传递给子组件-->
+    <todo-item :content="item" v-for="(item, index) in list" :key="index"  @delete="handleItemClick(index)"></todo-item>
+<!--    @delete 监听子组件的delete 方法， 执行父组件的handleItemClick， 把父组件的content 改变， 子组件即变了-->
+  </ul>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+import TodoItem from "@/components/TodoItem"; // 注册组件
+  export default {
+    data () {
+      return {
+        inputValue: '',
+        list: [
+          'vue',
+          'react',
+        ]
+      }
+    },
+    components: {
+      TodoItem: TodoItem
+    },
+    methods: {
+      handleBtn () {
+        this.list.push(this.inputValue)
+        this.inputValue = ''
+      },
+      handleItemClick (index) {
+        this.list.splice(index, 1)
+      },
+      beforeCreate () {
+        // 创建实例之前
+        console.log(this.$el)
+        console.log('beforeCreate')
+      },
+      created () {
+        // 创建完成
+        console.log(this.$el)
+        console.log('created')
+      },
+      beforeMount () {
+        // 挂载前
+        console.log(this.$el)
+        console.log('beforeMount')
+      },
+      mounted () {
+        // 挂载后
+        console.log(this.$el)
+        console.log('mounted')
+      },
+      beforeUpdate () {
+        // 更新前
+        console.log(this.$el)
+        console.log('beforeUpdate')
+      },
+      beforeDestroy () {
+        // 销毁前
+        console.log(this.$el)
+        console.log('beforeDestroy')
+      },
+      destroyed () {
+        // 销毁后
+        console.log(this.$el)
+        console.log('destroyed')
+      }
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  ul {
+    list-style: none;
+  }
 </style>
+
+
+
