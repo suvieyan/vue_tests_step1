@@ -31,41 +31,6 @@ import TodoItem from "@/components/TodoItem"; // 注册组件
       },
       handleItemClick (index) {
         this.list.splice(index, 1)
-      },
-      beforeCreate () {
-        // 创建实例之前
-        console.log(this.$el)
-        console.log('beforeCreate')
-      },
-      created () {
-        // 创建完成
-        console.log(this.$el)
-        console.log('created')
-      },
-      beforeMount () {
-        // 挂载前
-        console.log(this.$el)
-        console.log('beforeMount')
-      },
-      mounted () {
-        // 挂载后
-        console.log(this.$el)
-        console.log('mounted')
-      },
-      beforeUpdate () {
-        // 更新前
-        console.log(this.$el)
-        console.log('beforeUpdate')
-      },
-      beforeDestroy () {
-        // 销毁前
-        console.log(this.$el)
-        console.log('beforeDestroy')
-      },
-      destroyed () {
-        // 销毁后
-        console.log(this.$el)
-        console.log('destroyed')
       }
     }
   }
